@@ -1,0 +1,123 @@
+{% extends "Master/header.html" %}
+{% block content %}
+{% load static %}
+<div class="pagetitle">
+    <h1>Raw Materials</h1>
+    <nav>
+
+    </nav>
+  </div>
+    <section class="section" style="min-height: 500px;">
+      <div class="row">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+          <div class="alert alert-success"> {{message }}</div>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <div class="col-lg-6">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Add New Raw Materials</h5>
+              <form action="/update_raw_materials/{{data.raw_materials_id}}" method="post" id="myform" class="row g-3">
+                {% csrf_token %}
+                <div class="form-group"> <label for="">Raw Materials</label>
+                    <input type="text" class="form-control" id="" value="{{data.raw_materials}}" placeholder="Raw materials" name="raw_materials"> </div>
+                    <div class="form-group"> <label for="">Description</label>
+                      <textarea name="description" class="form-control">{{data.description}}</textarea></div>
+                      <div class="form-group"> <label for="">Quantity</label>
+                        <input type="text" class="form-control" id="" value="{{data.quantity}}" placeholder="Quantity" name="quantity"> </div>
+
+                        <div class="form-group"> <label for="">Price</label>
+                          <input type="text" class="form-control"  placeholder="Price" value="{{data.price}}"  name="price"> </div>
+                      <div class="form-group"> <label for="">Image</label>
+                        <input type="file" class="form-control" id="" placeholder="image" name="image"> </div>
+                        <div><img src="{{data.image}}" width="100" height="80"></div>
+                        <div class="text-center" >
+                <button type="submit" class="btn btn-primary">Submit</button> </form>
+</div>
+<script src="{% static 'assets/Validation/jquery-1.11.1.min.js' %}"></script>
+<script src="{% static 'assets/Validation/jquery_validate.js' %}"></script>
+<script src="{% static 'assets/Validation/additional_validate.js' %}"></script>
+
+                <script>
+                    (function ($, W, D)
+                  {
+                  var JQUERY4U = {};
+                  JQUERY4U.UTIL =
+                      {
+                          setupFormValidation: function ()
+                          {
+                            $.validator.addMethod(
+                    "regex",
+                    function(value, element, regexp) {
+                        var check = false;
+                        return this.optional(element) || regexp.test(value);
+                    },
+                    "Not a valid Input."
+                );
+
+                          //form validation rules
+                          $("#myform").validate({
+                            rules: {
+                              raw_materials: {
+                                                  required: true,
+
+
+                                                },
+                                                description: {
+                                                  required: true,
+
+
+                                                },
+                                                image: {
+
+                                                extension:'jpg|png|jpeg'
+
+                                                },
+                                                price: {
+                                                  required: true,
+                                                  digits:true,
+
+
+                                                },
+                                                quantity: {
+                                                  required: true,
+                                                  digits:true,
+
+
+                                                },
+
+                                              },
+                                              messages: {
+
+
+
+                              },
+                              submitHandler: function (form) {
+                              form.submit();
+                              }
+                          });
+                        }
+                      }
+                  //when the dom has loaded setup form validation rules
+                  $(D).ready(function ($) {
+                      JQUERY4U.UTIL.setupFormValidation();
+                  });
+                  })(jQuery, window, document);
+                </script>
+
+            </div>
+          </div>
+
+        </div>
+
+
+          </div></div>
+        </div>
+      </div>
+    </section>
+
+    {% endblock %}

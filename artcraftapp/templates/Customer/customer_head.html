@@ -1,0 +1,421 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<title>ART & CRAFT</title>
+	<!--/tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Grocery Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!--//tags -->
+	<link href="{% static 'assets/css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{% static 'assets/css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{% static 'assets/css/font-awesome.css' %}" rel="stylesheet">
+	<!--pop-up-box-->
+	<link href="{% static 'assets/css/popuo-box.css' %}" rel="stylesheet" type="text/css" media="all" />
+	<!--//pop-up-box-->
+	<!-- price range -->
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/jquery-ui1.css' %}">
+	<!-- fonts -->
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+</head>
+
+<body>
+	<!-- top-header -->
+	<div class="header-most-top">
+		<p>ART & CRAFT</p>
+	</div>
+	<!-- //top-header -->
+	<!-- header-bot-->
+	<div class="header-bot">
+		<div class="header-bot_inner_wthreeinfo_header_mid">
+			<!-- header-bot-->
+			<div class="col-md-4 logo_agile">
+				<h1>
+					<a href="#">
+						<span>A</span>rt and
+						<span>C</span>raft
+
+					</a>
+				</h1>
+			</div>
+			<!-- header-bot -->
+			<div class="col-md-8 header">
+				<!-- header lists -->
+
+				<!-- //header lists -->
+				<!-- search -->
+
+				<!-- //search -->
+				<!-- cart details -->
+				<div class="top_nav_right">
+					<div class="wthreecartaits wthreecartaits2 cart cart box_1">
+						<form action="#" method="post" class="last">
+							<input type="hidden" name="cmd" value="_cart">
+							<input type="hidden" name="display" value="1">
+							<button class="w3view-cart" type="submit" name="submit" value="">
+								<i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+							</button>
+						</form>
+					</div>
+				</div>
+				<!-- //cart details -->
+				<div class="clearfix"></div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+
+
+	<div class="ban-top">
+		<div class="container">
+			<!-- <div class="agileits-navi_search">
+				<form action="#" method="post">
+					<select id="agileinfo-nav_search" name="agileinfo_search" required="">
+						<option value="">All Categories</option>
+						<option value="Kitchen">Kitchen</option>
+						<option value="Household">Household</option>
+						<option value="Snacks &amp; Beverages">Snacks & Beverages</option>
+						<option value="Personal Care">Personal Care</option>
+						<option value="Gift Hampers">Gift Hampers</option>
+						<option value="Fruits &amp; Vegetables">Fruits & Vegetables</option>
+						<option value="Baby Care">Baby Care</option>
+						<option value="Soft Drinks &amp; Juices">Soft Drinks & Juices</option>
+						<option value="Frozen Food">Frozen Food</option>
+						<option value="Bread &amp; Bakery">Bread & Bakery</option>
+						<option value="Sweets">Sweets</option>
+					</select>
+				</form>
+			</div> -->
+			<div class="top_nav_left">
+				<nav class="navbar navbar-default">
+					<div class="container-fluid">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+							    aria-expanded="false">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav menu__list">
+								<li>
+									<a class="nav-stylehead" href="/Customer/">Home
+										<span class="sr-only">(current)</span>
+									</a>
+								</li>
+								<li>
+									<a class="nav-stylehead" href="/myorder/">My Order
+										<span class="sr-only">(current)</span>
+									</a>
+								</li>
+
+
+								<li class="dropdown">
+									<a class="nav-stylehead dropdown-toggle" href="#" data-toggle="dropdown">Complaints
+										<b class="caret"></b>
+									</a>
+									<ul class="dropdown-menu agile_short_dropdown">
+										<li>
+											<a href="/Complaint/">Add Complaints </a>
+										</li>
+										<li>
+											<a href="/Complaint_list/">Replied Complaints</a>
+										</li>
+									</ul>
+								</li>
+								<li class="dropdown">
+									<a class="nav-stylehead dropdown-toggle" href="#" data-toggle="dropdown">Feedback
+										<b class="caret"></b>
+									</a>
+									<ul class="dropdown-menu agile_short_dropdown">
+										<li>
+											<a href="/Feedback/">Add Feedback </a>
+										</li>
+										<li>
+											<a href="/Feedback_list/">Replied feedback</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a class="nav-stylehead" href="/cust_events/">Events/News
+
+									</a>
+								</li>
+
+
+								<li class="dropdown">
+									<a class="nav-stylehead dropdown-toggle" href="#" data-toggle="dropdown">Artist Work
+										<b class="caret"></b>
+									</a>
+									<ul class="dropdown-menu agile_short_dropdown">
+										<li>
+											<a href="/artist_work_list/">Artist Work
+
+											</a>
+										</li>
+										<li>
+											<a href="/artist_work_order_list/">Artist Work Order
+
+											</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a class="nav-stylehead" href="/raw_materials_list_user/">Raw Materials
+
+									</a>
+								</li>
+								<li class="">
+									<a class="nav-stylehead" href="/user_logout/">Logout</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<!-- //navigation -->
+	<!-- banner-2 -->
+	<div class="page-head_agile_info_w3l">
+
+	</div>
+	<!-- //banner-2 -->
+	<!-- page -->
+	<div class="services-breadcrumb">
+		<div class="agile_inner_breadcrumb">
+			<div class="container">
+				<ul class="w3_short">
+					<li>
+						<a href="#">ART and CRAFT</a>
+						<i>|</i>
+					</li>
+					<li> ART and CRAFT </li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+    {% block content %}{% endblock %}
+
+
+	<div class="footer-top">
+		<div class="container-fluid">
+
+		</div>
+	</div>
+	<!-- //newsletter -->
+	<!-- footer -->
+	<footer>
+		<div class="container">
+
+	</footer>
+	<!-- //footer -->
+	<!-- copyright -->
+	<div class="copy-right">
+		<div class="container">
+			ART and CRAFT
+			</p>
+		</div>
+	</div>
+	<!-- //copyright -->
+
+	<!-- js-files -->
+	<!-- jquery -->
+	<script src="{% static 'assets/js/jquery-2.1.4.min.js' %}"></script>
+	<!-- //jquery -->
+
+	<!-- popup modal (for signin & signup)-->
+	<script src="{% static 'assets/js/jquery.magnific-popup.js' %}"></script>
+	<script>
+		$(document).ready(function () {
+			$('.popup-with-zoom-anim').magnificPopup({
+				type: 'inline',
+				fixedContentPos: false,
+				fixedBgPos: true,
+				overflowY: 'auto',
+				closeBtnInside: true,
+				preloader: false,
+				midClick: true,
+				removalDelay: 300,
+				mainClass: 'my-mfp-zoom-in'
+			});
+
+		});
+	</script>
+	<!-- Large modal -->
+	<!-- <script>
+		$('#').modal('show');
+	</script> -->
+	<!-- //popup modal (for signin & signup)-->
+
+	<!-- cart-js -->
+	<script src="{% static 'assets/js/minicart.js' %}"></script>
+	<script>
+		paypalm.minicartk.render(); //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
+
+		paypalm.minicartk.cart.on('checkout', function (evt) {
+			var items = this.items(),
+				len = items.length,
+				total = 0,
+				i;
+				st=0
+
+			// Count the number of each item in the cart
+			for (i = 0; i < len; i++) {
+				qty=items[i].get('quantity')
+				total += items[i].get('quantity');
+				st=items[i].get('item_stock');
+				if (st < qty) {
+					name=items[i].get('item_name')
+				alert(name + ' item is out of stock');
+				evt.preventDefault();
+			}
+			}
+
+			if (total < 1) {
+				alert('The minimum order quantity is 1. Please add more to your shopping cart before checking out');
+				evt.preventDefault();
+			}
+
+
+		});
+	</script>
+	<!-- //cart-js -->
+
+	<!-- price range (top products) -->
+	<script src="{% static 'assets/js/jquery-ui.js' %}"></script>
+
+	<script>
+		//<![CDATA[
+		$(window).load(function () {
+			$("#slider-range").slider({
+				range: true,
+				min: 0,
+				max: 9000,
+				values: [50, 6000],
+				slide: function (event, ui) {
+					$("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+				}
+			});
+			$("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+
+		}); //]]>
+	</script>
+	<!-- //price range (top products) -->
+
+	<!-- flexisel (for special offers) -->
+	<script src="{% static 'assets/js/jquery.flexisel.js' %}"></script>
+	<script>
+		$(window).load(function () {
+			$("#flexiselDemo1").flexisel({
+				visibleItems: 3,
+				animationSpeed: 1000,
+				autoPlay: true,
+				autoPlaySpeed: 3000,
+				pauseOnHover: true,
+				enableResponsiveBreakpoints: true,
+				responsiveBreakpoints: {
+					portrait: {
+						changePoint: 480,
+						visibleItems: 1
+					},
+					landscape: {
+						changePoint: 640,
+						visibleItems: 2
+					},
+					tablet: {
+						changePoint: 768,
+						visibleItems: 2
+					}
+				}
+			});
+
+		});
+	</script>
+	<!-- //flexisel (for special offers) -->
+
+	<!-- password-script -->
+	<script>
+		window.onload = function () {
+			document.getElementById("password1").onchange = validatePassword;
+			document.getElementById("password2").onchange = validatePassword;
+		}
+
+		function validatePassword() {
+			var pass2 = document.getElementById("password2").value;
+			var pass1 = document.getElementById("password1").value;
+			if (pass1 != pass2)
+				document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+			else
+				document.getElementById("password2").setCustomValidity('');
+			//empty string means no validation error
+		}
+	</script>
+	<!-- //password-script -->
+
+	<!-- smoothscroll -->
+	<script src="{% static 'assets/js/SmoothScroll.min.js' %}"></script>
+	<!-- //smoothscroll -->
+
+	<!-- start-smooth-scrolling -->
+	<script src="{% static 'assets/js/move-top.js' %}"></script>
+	<script src="{% static 'assets/js/easing.js' %}"></script>
+	<script>
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+
+				$('html,body').animate({
+					scrollTop: $(this.hash).offset().top
+				}, 1000);
+			});
+		});
+	</script>
+	<!-- //end-smooth-scrolling -->
+
+	<!-- smooth-scrolling-of-move-up -->
+	<script>
+		$(document).ready(function () {
+			/*
+			var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear'
+			};
+			*/
+			$().UItoTop({
+				easingType: 'easeOutQuart'
+			});
+
+		});
+	</script>
+	<!-- //smooth-scrolling-of-move-up -->
+
+	<!-- for bootstrap working -->
+	<script src="{% static 'assets/js/bootstrap.js' %}"></script>
+
+	<!-- //for bootstrap working -->
+	<!-- //js-files -->
+
+
+</body>
+
+</html>

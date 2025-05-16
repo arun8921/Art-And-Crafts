@@ -1,0 +1,178 @@
+{% extends "Customer/customer_head.html" %}
+{% block content %}
+{% load static %}
+<div class="contact-w3l">
+    <div class="container">
+        <!-- tittle heading -->
+        <h3 class="tittle-w3l">Feedback
+            <span class="heading-style">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </h3>
+        <!-- //tittle heading -->
+        <!-- contact -->
+        <div class="contact agileits">
+            <div class="contact-agileinfo">
+                <div class="contact-form wthree">
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                      <div class="alert alert-success"> {{message }}</div>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+
+                    <form method="post" action="/save_feedback/" method="post" id="myform" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+
+                       <div class="form-group">
+                        <label> Subject</label>
+                        <input name="subject" type="text" class="form-control">
+                   </div>
+                       <div class="form-group">
+                             <label>feedback</label>
+                           <textarea name="feedback"  class="form-control"></textarea>
+                      </div>
+
+                  <div class="col-sm-12"  style="text-align: center;">
+                    <input type="submit" value="Submit" class="myButton">
+          </div></div>
+               </form>
+
+               <script src="{% static 'assets/Validation/jquery-1.11.1.min.js' %}"></script>
+                                   <script src="{% static 'assets/Validation/jquery_validate.js' %}"></script>
+                                   <script src="{% static 'assets/Validation/additional_validate.js' %}"></script>
+           <script>
+               (function ($, W, D)
+             {
+             var JQUERY4U = {};
+             JQUERY4U.UTIL =
+                 {
+                     setupFormValidation: function ()
+                     {
+                       $.validator.addMethod(
+               "regex",
+               function(value, element, regexp) {
+                   var check = false;
+                   return this.optional(element) || regexp.test(value);
+               },
+               "Not a valid Input."
+           );
+
+                     //form validation rules
+                     $("#myform").validate({
+                       rules: {
+
+                                   subject: {
+
+                                               required: true,
+                                             regex :/^[a-zA-Z. ]+$/,
+                                             minlength: 3,
+
+                                           },
+                                           feedback: {
+
+                                               required: true,
+                                             regex :/^[a-zA-Z. ]+$/,
+                                             minlength: 3,
+                                             maxlength:150,
+
+                                           },
+                                           state: {
+                          required: true,
+
+
+                        },
+                        district: {
+                          required: true,
+
+
+                        },
+                        shop: {
+                          required: true,
+
+
+                        },
+                                         },
+                                         messages: {
+
+
+
+                         },
+                         submitHandler: function (form) {
+                         form.submit();
+                         }
+                     });
+                   }
+                 }
+             //when the dom has loaded setup form validation rules
+             $(D).ready(function ($) {
+                 JQUERY4U.UTIL.setupFormValidation();
+             });
+             })(jQuery, window, document);
+           </script>
+
+<script src="{% static 'assets/Validation/jquery-1.11.1.min.js' %}"></script>
+<script>
+$("#state").change(function () {
+    var state = $(this).val();
+
+    $.ajax({
+
+          url: '/display_district/',
+          data: {
+              'state_id': state
+          },
+          dataType: 'json',
+          success: function (data) {
+
+
+             let html_data = '<option value="">--Select--</option>';
+ data.forEach(function (data) {
+ html_data += `<option value="${data.district_id}">${data.district}</option>`
+ });
+ $("#district").html(html_data);
+
+
+
+          }
+    });
+
+ });
+ $("#district").change(function () {
+    var district = $(this).val();
+
+    $.ajax({
+
+          url: '/display_shop/',
+          data: {
+              'district_id': district
+          },
+          dataType: 'json',
+          success: function (data) {
+
+
+             let html_data = '<option value="">--Select--</option>';
+ data.forEach(function (data) {
+ html_data += `<option value="${data.login_id}">${data.Name}</option>`
+ });
+ $("#shop").html(html_data);
+
+
+
+          }
+    });
+
+ });
+</script>
+                </div>
+
+            </div>
+        </div>
+        <!-- //contact -->
+    </div>
+</div>
+	{% endblock %}

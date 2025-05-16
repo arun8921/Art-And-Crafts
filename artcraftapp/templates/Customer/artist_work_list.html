@@ -1,0 +1,60 @@
+{% extends "Customer/customer_head.html" %}
+{% block content %}
+{% load static %}
+<div class="contact-w3l">
+    <div class="container">
+        <!-- tittle heading -->
+        <h3 class="tittle-w3l">ARTIST WORK
+            <span class="heading-style">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </h3>
+        <!-- //tittle heading -->
+        <!-- contact -->
+        <div class="contact agileits">
+            <div class="contact-agileinfo">
+                <div class="contact-form wthree">
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                      <div class="alert alert-success"> {{message }}</div>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% if data %}
+                    <table class="table table-striped table-bordered">
+
+
+                      {%  for k in data  %}
+
+                        <tr>
+
+
+
+                            <td >
+
+                                <div  style="font-weight: bold;">ARTIST NAME: {{k.7}}</div>
+                                <div style="font-weight: bold; text-decoration: underline;">{{k.1}}</div>
+                                <div >{{k.2}}</div>
+                              <div><img src="{{k.3}}" width="300" height="250"></div>
+<div style="margin: 5px;">  <a href="/buy_artist_work/{{k.0}}" class="btn btn-info">Buy</a> <a href="/artist_work_comment/{{k.0}}" class="btn btn-info">Comment</a></div>
+                            </td>
+
+                               </tr>
+
+                          {% endfor  %}
+                    </table>
+                          {% else %}
+                          <div class="alert alert-success"> No List Available</div>
+                          {% endif %}
+
+                </div>
+
+            </div>
+        </div>
+        <!-- //contact -->
+    </div>
+</div>
+{% endblock %}

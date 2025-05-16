@@ -1,0 +1,164 @@
+{% extends "Artist/header.html" %}
+{% block content %}
+{% load static %}
+<div class="pagetitle">
+    <h1>Buy Raw Materials</h1>
+    <nav>
+
+    </nav>
+  </div>
+    <section class="section" style="min-height: 500px;">
+      <div class="row">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+          <div class="alert alert-success"> {{message }}</div>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <div class="col-lg-6">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">BUY NOW</h5>
+              {% if messages %}
+              <ul class="messages">
+                  {% for message in messages %}
+                <div class="alert alert-success"> {{message }}</div>
+                  {% endfor %}
+              </ul>
+              {% endif %}
+                <form action="/payment_action_raw_matierial/" name="myform" id="myform" method="post" class="creditly-card-form agileinfo_form">
+                    {% csrf_token %}
+                    <div class="creditly-wrapper wthree, w3_agileits_wrapper">
+                    <div class="credit-card-wrapper">
+                    <div class="first-row form-group">
+                    <div class="controls">
+                    <label class="control-label">Name on Card</label>
+                    <input class="billing-address-name form-control" type="text" name="name" placeholder="">
+                    </div>
+                    <div class="w3_agileits_card_number_grids">
+                        <div class="w3_agileits_card_number_grid_right">
+                            <div class="controls">
+                            <label class="control-label">Card Type</label>
+
+                            <select name="card_type"  class="form-control">
+                                <option value="">--Select--</option>
+    <option value="Credit">Credit</option>
+    <option value="Dedit">Dedit</option>
+
+                            </select>
+                            </div>
+                            </div>
+                    <div class="w3_agileits_card_number_grid_left">
+                    <div class="controls">
+                    <label class="control-label">Card Number</label>
+                    <input class="number credit-card-number form-control" type="text" name="number">
+                    </div>
+                    </div>
+                    <div class="w3_agileits_card_number_grid_right">
+                    <div class="controls">
+                    <label class="control-label">CVV</label>
+                    <input class="security-code form-control"  type="text" name="security_code">
+                    </div>
+                    </div>
+
+                    <div class="controls">
+                    <label class="control-label">Amount</label>
+                    <input class="form-control" readonly type="text" name="amount" value="{{total}}">
+                    <input class="form-control" type="hidden" name="product_id" value="{{id}}">
+                    <input class="form-control" type="hidden" name="quantity" value="{{quantity}}">
+                    </div>
+                    <div class="clear"> </div>
+                    </div>
+                    <div class="controls">
+                    <label class="control-label">Expiration Date</label>
+                    <input class="expiration-month-and-year form-control" type="text" name="exp" placeholder="MM / YY">
+                    </div>
+                    </div>
+                    <input type="submit" value="Make Payment" class="btn btn-info">
+                    </button>
+                    </div>
+                    </div>
+                    </form>
+                    <script src="{% static 'assets/Validation/jquery-1.11.1.min.js' %}"></script>
+                    <script src="{% static 'assets/Validation/jquery_validate.js' %}"></script>
+                    <script src="{% static 'assets/Validation/additional_validate.js' %}"></script>
+                    <script>
+                    (function ($, W, D)
+                    {
+                    var JQUERY4U = {};
+                    JQUERY4U.UTIL =
+                    {
+                    setupFormValidation: function ()
+                    {
+                    $.validator.addMethod(
+                    "regex",
+                    function(value, element, regexp) {
+                    var check = false;
+                    return this.optional(element) || regexp.test(value);
+                    },
+                    "Not a valid Input."
+                    );
+
+                    //form validation rules
+                    $("#myform").validate({
+                    rules: {
+
+                    name: {
+                    required: true,
+                    regex : /^[A-Za-z ]+$/,
+                    minlength: 3,
+
+                    },
+                    number: {
+                    required: true,
+                    digits:true,
+                    minlength: 16,
+                    maxlength: 16,
+                    },
+                    security_code: {
+                    required: true,
+                    digits:true,
+                    minlength: 3,
+                    maxlength: 3,
+                    },
+                    exp: {
+                    required: true,
+                    regex : /^((0[1-9])|(1[0-2]))\/(\d{4})$/,
+
+                    },
+                    card_type: {
+                    required: true,
+
+                    },
+                    },
+                    messages: {
+
+
+
+                    },
+                    submitHandler: function (form) {
+                    form.submit();
+                    }
+                    });
+                    }
+                    }
+                    //when the dom has loaded setup form validation rules
+                    $(D).ready(function ($) {
+                    JQUERY4U.UTIL.setupFormValidation();
+                    });
+                    })(jQuery, window, document);
+                    </script>
+            </div>
+          </div>
+
+        </div>
+
+
+          </div></div>
+        </div>
+      </div>
+    </section>
+
+    {% endblock %}

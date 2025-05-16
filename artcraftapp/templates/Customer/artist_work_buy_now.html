@@ -1,0 +1,136 @@
+{% extends "Customer/customer_head.html" %}
+{% block content %}
+{% load static %}
+<div class="contact-w3l">
+    <div class="container">
+        <!-- tittle heading -->
+        <h3 class="tittle-w3l">ARTIST WORK BUY
+            <span class="heading-style">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </h3>
+        <!-- //tittle heading -->
+        <!-- contact -->
+        <div class="contact agileits">
+            <div class="contact-agileinfo">
+                <div class="contact-form wthree">
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                      <div class="alert alert-success"> {{message }}</div>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+
+                    <form action="/payment_artist_work/{{data.artist_work_id}}" method="post" id="myform" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+
+                        <div class="form-group"> Product Name : {{data.raw_materials}}</div>
+
+                        <div>
+                            <img src="{{data.image}}" style="width:20%" height="80">
+                        </div>
+                        <div style="padding:5px">
+                           Stock Available : {{data.quantity}} Nos
+                        </div>
+                                <div class="form-group">
+                                    <input type="hidden" value="{{data.quantity}}" readonly   class="form-control" id="stock"  name="stock"> </div>
+
+                                    <div class="form-group"> <label for="">price</label>
+                                        <input type="text" value="{{data.price}}" readonly   class="form-control" id="price" placeholder="Price" name="price"> </div>
+
+                                        <div class="form-group"> <label for="">Quantity</label>
+                                            <input type="text" value="1" onkeyup="multiply()"    class="form-control" id="qty" name="quantity"> </div>
+
+
+                                            <div class="form-group"> <label for="">Total</label>
+                                                <input type="text" readonly value="{{data.price}}"    class="form-control" id="tot" name="tot_amount"> </div>                     <div class="col-sm-12" style="text-align: center;" ><button type="submit" class="btn btn-info">Make Payment</button></div>
+
+                    </form>
+
+                    <script>
+                function multiply()
+                {
+                  qty=parseInt(document.getElementById('qty').value)
+                  price=parseInt(document.getElementById('price').value)
+                  if(qty)
+                  {
+                    p=qty*price
+                    document.getElementById('tot').value=p
+                  }
+                  else
+                  {
+                    document.getElementById('tot').value=0
+                  }
+
+                }
+                    </script>
+
+                    <script src="{% static 'assets/Validation/jquery-1.11.1.min.js' %}"></script>
+                    <script src="{% static 'assets/Validation/jquery_validate.js' %}"></script>
+                    <script src="{% static 'assets/Validation/additional_validate.js' %}"></script>
+                <script>
+                (function ($, W, D)
+                {
+                var JQUERY4U = {};
+                JQUERY4U.UTIL =
+                {
+                setupFormValidation: function ()
+                {
+                $.validator.addMethod(
+                "regex",
+                function(value, element, regexp) {
+                var check = false;
+                return this.optional(element) || regexp.test(value);
+                },
+                "Not a valid Input."
+                );
+                $.validator.addMethod('lessThanEqual', function(value, element, param) {
+                    if (this.optional(element)) return true;
+                    var i = parseInt(value);
+                    var j = parseInt($(param).val());
+                    return i <= j;
+                }, "The value quantity must be less than stock");
+                //form validation rules
+                $("#myform").validate({
+                rules: {
+
+                    quantity: {
+                              required: true,
+                              lessThanEqual: "#stock",
+                              min:1,
+                              digits:true,
+                            },
+                            tot_amount: {
+                              required: true,
+
+                            },
+                          },
+                          messages: {
+
+
+
+                },
+                submitHandler: function (form) {
+                form.submit();
+                }
+                });
+                }
+                }
+                //when the dom has loaded setup form validation rules
+                $(D).ready(function ($) {
+                JQUERY4U.UTIL.setupFormValidation();
+                });
+                })(jQuery, window, document);
+                </script>
+                </div>
+
+            </div>
+        </div>
+        <!-- //contact -->
+    </div>
+</div>
+	{% endblock %}

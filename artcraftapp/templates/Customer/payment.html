@@ -1,0 +1,132 @@
+{% extends "Customer/customer_head.html" %}
+{% block content %}
+{% load static %}
+<div class="privacy">
+<div class="container">
+<!-- tittle heading -->
+<h3 class="tittle-w3l">Payment
+<span class="heading-style">
+<i></i>
+<i></i>
+<i></i>
+</span>
+</h3>
+<!-- //tittle heading -->
+<div class="checkout-right">
+<!--Horizontal Tab-->
+<div id="parentHorizontalTab">
+
+<div class="resp-tabs-container hor_1">
+
+<form action="/pay_action/" name="myform" id="myform" method="post" class="creditly-card-form agileinfo_form">
+{% csrf_token %}
+<div class="creditly-wrapper wthree, w3_agileits_wrapper">
+<div class="credit-card-wrapper">
+<div class="first-row form-group">
+<div class="controls">
+<label class="control-label">Name on Card</label>
+<input class="billing-address-name form-control" type="text" name="name" placeholder="">
+</div>
+<div class="w3_agileits_card_number_grids">
+<div class="w3_agileits_card_number_grid_left">
+<div class="controls">
+<label class="control-label">Card Number</label>
+<input class="number credit-card-number form-control" type="text" name="number">
+</div>
+</div>
+<div class="w3_agileits_card_number_grid_right">
+<div class="controls">
+<label class="control-label">CVV</label>
+<input class="security-code form-control"  type="text" name="security_code">
+</div>
+</div>
+<div class="controls">
+<label class="control-label">Amount</label>
+<input class="form-control" readonly type="text" name="amount" value="{{sum}}">
+<input class="form-control" type="hidden" name="cno" value="{{check_no1}}">
+</div>
+<div class="clear"> </div>
+</div>
+<div class="controls">
+<label class="control-label">Expiration Date</label>
+<input class="expiration-month-and-year form-control" type="text" name="exp" placeholder="MM / YY">
+</div>
+</div>
+<input type="submit" value="Make Payment" class="btn btn-info">
+</button>
+</div>
+</div>
+</form>
+<script src="{% static 'assets/Validation/jquery-1.11.1.min.js' %}"></script>
+<script src="{% static 'assets/Validation/jquery_validate.js' %}"></script>
+<script src="{% static 'assets/Validation/additional_validate.js' %}"></script>
+<script>
+(function ($, W, D)
+{
+var JQUERY4U = {};
+JQUERY4U.UTIL =
+{
+setupFormValidation: function ()
+{
+$.validator.addMethod(
+"regex",
+function(value, element, regexp) {
+var check = false;
+return this.optional(element) || regexp.test(value);
+},
+"Not a valid Input."
+);
+
+//form validation rules
+$("#myform").validate({
+rules: {
+
+name: {
+required: true,
+regex : /^[A-Za-z ]+$/,
+minlength: 3,
+
+},
+number: {
+required: true,
+digits:true,
+minlength: 16,
+maxlength: 16,
+},
+security_code: {
+required: true,
+digits:true,
+minlength: 3,
+maxlength: 3,
+},
+exp: {
+required: true,
+
+},
+},
+messages: {
+
+
+
+},
+submitHandler: function (form) {
+form.submit();
+}
+});
+}
+}
+//when the dom has loaded setup form validation rules
+$(D).ready(function ($) {
+JQUERY4U.UTIL.setupFormValidation();
+});
+})(jQuery, window, document);
+</script>
+</div>
+
+</div>
+</div>
+<!--Plug-in Initialisation-->
+</div>
+</div>
+</div>
+{% endblock %}

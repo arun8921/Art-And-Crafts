@@ -1,0 +1,56 @@
+{% extends "Artist/header.html" %}
+{% block content %}
+{% load static %}
+<div class="pagetitle">
+    <h1>Artist Work List</h1>
+    <nav>
+
+    </nav>
+  </div>
+    <section class="section" style="min-height: 500px;">
+      <div class="row">
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+          <div class="alert alert-success"> {{message }}</div>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Work List</h5>
+              {% if data %}
+              <table class="table table-striped table-bordered">
+                <thead><th>Id</th><th>Work</th><th>Description</th><th>Price</th><th>Quantity</th><th>Image</th><th>#</th></thead>
+
+                {%  for k in data  %}
+
+                  <tr>
+
+
+                    <td>{{forloop.counter}}</td>
+                        <td>{{k.artist_work}}</td>
+                        <td>{{k.description}}</td>
+                        <td>{{k.price}}</td>
+                        <td>{{k.quantity}}</td>
+                        <td><img src="{{k.image}}" width="100" height="80"></td>
+                        <td><a href="/edit_upload_work/{{k.artist_work_id}}" class="btn btn-info">Edit</a></td>
+                        <td><a href="/delete_upload_work/{{k.artist_work_id}}" onclick="return ConfirmDialog();" class="btn btn-danger">Delete</a></td>
+                        <td><a href="/comment_list/{{k.artist_work_id}}" class="btn btn-info">Comment</a></td>
+                      </tr>
+
+                    {% endfor  %}
+              </table>
+                    {% else %}
+                    <div class="alert alert-success"> No List Available</div>
+                    {% endif %}
+          </div></div>
+        </div>
+      </div>
+    </section>
+
+    {% endblock %}

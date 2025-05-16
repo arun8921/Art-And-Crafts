@@ -1,0 +1,60 @@
+{% extends "Customer/customer_head.html" %}
+{% block content %}
+{% load static %}
+<div class="contact-w3l">
+    <div class="container">
+        <!-- tittle heading -->
+        <h3 class="tittle-w3l">Complaints List
+            <span class="heading-style">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </h3>
+        <!-- //tittle heading -->
+        <!-- contact -->
+        <div class="contact agileits">
+            <div class="contact-agileinfo">
+                <div class="contact-form wthree">
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                      <div class="alert alert-success"> {{message }}</div>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% if data1 %}
+                    <table class="table table-striped table-bordered">
+                        <thead><th>Id</th><th>Subject</th><th>Complaint</th><th>Reply</th><th>#</th></thead>
+
+                    {%  for k in data1  %}
+
+                    <tr>
+
+
+                          <td>{{forloop.counter}}</td>
+                          <td>{{k.complaint_subject}}</td>
+                          <td>{{k.complaint}}</td>
+                          <td>{{k.reply }}
+                          </td>
+
+
+                          <td><a href="/delete_complaint/{{k.complaint_id}}"  onclick="return ConfirmDialog();" class="btn btn-danger">Delete</a></td>
+                      </tr>
+
+                      {% endfor  %}
+                      {% else %}
+                      <div class="alert alert-success"> No List Available</div>
+                      {% endif %}
+
+                </table>
+
+
+                </div>
+
+            </div>
+        </div>
+        <!-- //contact -->
+    </div>
+</div>
+{% endblock %}

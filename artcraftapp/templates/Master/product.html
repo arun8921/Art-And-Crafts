@@ -1,0 +1,150 @@
+{% extends "Master/header.html" %}
+{% block content %}
+{% load static %}
+<div class="pagetitle">
+    <h1>Art and crafts Product</h1>
+    <nav>
+
+    </nav>
+  </div>
+    <section class="section" style="min-height: 500px;">
+      <div class="row">
+
+
+
+
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Add Craft<h5>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                  <div class="alert alert-success"> {{message }}</div>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+              <form action="/save_product/" method="post" id="myform" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                <div class="col-sm-6">
+             <div class="form-group"><label  class="form-label" for=""> Craft Category</label>   <select name="category" id="category" class="form-control">
+                    <option value="">--Select--</option>
+                    {%  for k in data  %}
+                    <option value="{{k.category_id}}">{{k.category}}</option>
+                    {% endfor  %}
+                </select> </div>
+                <div class="form-group"> <label  class="form-label" for="">Craft name</label>
+                    <input type="text" class="form-control" id="" placeholder="product" name="product"> </div>
+                    <div class="form-group"> <label  class="form-label" for="">Artist Name</label>
+                      <input type="text" class="form-control" id="" placeholder="Artist Name" name="painter_name"> </div>
+                    <div class="form-group"> <label  class="form-label" for="">Quantity</label>
+                        <input type="text" class="form-control" id="" placeholder="quantity" name="quantity"> </div>
+                        <div class="form-group"> <label  class="form-label" for="">Price</label>
+                            <input type="text" class="form-control" id="" placeholder="price" name="price"> </div>
+
+
+
+
+
+</div>
+<div class="col-sm-6">
+
+  <div class="form-group"> <label  class="form-label" for="">Upload Image</label>
+    <input type="file" class="form-control" id="" placeholder="image" name="image"> </div>
+
+
+     <div class="form-group"> <label  class="form-label" for="">Features</label>
+      <textarea class="form-control" name="features"  placeholder="Features"></textarea></div>
+      <div class="form-group"> <label  class="form-label" for="">Description</label>
+       <textarea class="form-control" name="description" placeholder="Description"></textarea></div>
+</div><div class="text-center" style="margin:5px">       <button type="submit" class="btn btn-info">Submit</button></div></div>
+                               </form>
+                               <script src="{% static 'assets/Validation/jquery-1.11.1.min.js' %}"></script>
+                <script src="{% static 'assets/Validation/jquery_validate.js' %}"></script>
+                <script src="{% static 'assets/Validation/additional_validate.js' %}"></script>
+<script>
+(function ($, W, D)
+{
+var JQUERY4U = {};
+JQUERY4U.UTIL =
+{
+  setupFormValidation: function ()
+  {
+    $.validator.addMethod(
+"regex",
+function(value, element, regexp) {
+var check = false;
+return this.optional(element) || regexp.test(value);
+},
+"Not a valid Input."
+);
+
+  //form validation rules
+  $("#myform").validate({
+    rules: {
+                        category: {
+                          required: true,
+
+
+                        },
+                        product: {
+                          required: true,
+                          regex :/^[a-zA-Z0-9 ]+$/,
+
+                        },
+                        painter_name: {
+                          required: true,
+                          regex :/^[a-zA-Z0-9 ]+$/,
+
+                        },
+                        quantity: {
+                          required: true,
+                          number:true
+
+                        },
+                        price: {
+                          required: true,
+                          number:true
+
+                        },
+                        description: {
+                          required: true,
+
+                        },
+                        features: {
+                          required: true,
+
+                        },
+
+
+                        image: {
+                          required: true,
+
+                          extension:'jpg|jpeg|png'
+
+                        },
+                      },
+                      messages: {
+
+
+
+      },
+      submitHandler: function (form) {
+      form.submit();
+      }
+  });
+}
+}
+//when the dom has loaded setup form validation rules
+$(D).ready(function ($) {
+JQUERY4U.UTIL.setupFormValidation();
+});
+})(jQuery, window, document);
+</script>
+          </div></div>
+        </div>
+      </div>
+    </section>
+
+    {% endblock %}

@@ -1,0 +1,72 @@
+{% extends "Customer/customer_head.html" %}
+{% block content %}
+{% load static %}
+<div class="contact-w3l">
+    <div class="container">
+        <!-- tittle heading -->
+        <h3 class="tittle-w3l">Tender Details
+            <span class="heading-style">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </h3>
+        <!-- //tittle heading -->
+        <!-- contact -->
+        <div class="contact agileits">
+            <div class="contact-agileinfo">
+                <div class="contact-form wthree">
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                      <div class="alert alert-success"> {{message }}</div>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <h3 class="tittle-w3l">Accepted Tender - congratulations </h3>
+                    {% if data %}
+                    <table class="table table-striped table-bordered">
+                        <thead><th>Id</th><th>Tender Details</th><th>Amount</th><th>Due Date</th><th>Plantation Details</th><th>Tender Accepted Amount</th></thead>
+
+                    {%  for k in data  %}
+
+                    <tr>
+
+
+                          <td>{{forloop.counter}}</td>
+                          <td><div>Subject : {{k.1}}</div>
+                            <div>Description : {{k.2}}</div>
+                        </td>
+                          <td>Rs {{k.3}}/-</td>
+
+                          <td>{{k.5}}
+                        </td>
+                        <td>Plantation Name : {{k.10}}<br>
+                            Address : {{k.11}}<br>
+                            Owner : {{k.12}}<br>
+                            Email : {{k.13}}<br>
+                            Phone : {{k.14}}<br>
+                          </td>
+                          <td class="alert-success alert" style="font-weight: bold; color: green;">{{k.19}}
+                        </td>
+                        <td><img src="{{k.6}}" width="100" height="80"></td>
+
+
+                      </tr>
+
+                      {% endfor  %}
+                      {% else %}
+                      <div class="alert alert-success"> No List Available</div>
+                      {% endif %}
+
+                </table>
+
+
+                </div>
+
+            </div>
+        </div>
+        <!-- //contact -->
+    </div>
+</div>
+{% endblock %}

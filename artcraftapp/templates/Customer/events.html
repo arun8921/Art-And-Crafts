@@ -1,0 +1,60 @@
+{% extends "Customer/customer_head.html" %}
+{% block content %}
+{% load static %}
+<div class="contact-w3l">
+    <div class="container">
+        <!-- tittle heading -->
+        <h3 class="tittle-w3l">Notification/News
+            <span class="heading-style">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </h3>
+        <!-- //tittle heading -->
+        <!-- contact -->
+        <div class="contact agileits">
+            <div class="contact-agileinfo">
+                <div class="contact-form wthree">
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                      <div class="alert alert-success"> {{message }}</div>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+
+
+
+
+
+                {% if data %}
+                <div class="row">
+
+                    {%  for k in data  %}
+      <div class="col-sm-12">
+        <div style="padding: 10px;">   <b> {{k.subject}}</b></div>
+        <img src="{{k.image}}" width="200" height="180">
+
+        <div  style="padding: 10px;">    {{k.description}}</div>
+    </div>
+
+
+
+
+          {% endfor  %}
+                    </div>
+                  {% else %}
+                  <div class="alert alert-success"> No List Available</div>
+                  {% endif %}
+
+            </table>
+
+                </div>
+
+            </div>
+        </div>
+        <!-- //contact -->
+    </div>
+</div>
+{% endblock %}

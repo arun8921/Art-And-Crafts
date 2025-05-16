@@ -1,0 +1,307 @@
+{% load static %}
+
+{% load static %}
+<!doctype html>
+<html lang="zxx">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>ART & CRAFT</title>
+    <link href="//fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet">
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{% static 'assets_front/css/style-starter.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+</head>
+
+<body>
+    <!-- header -->
+    <header id="site-header" class="w3l-header-4 fixed-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1> <a class="navbar-brand" href="index.html">
+                    ART & CRAFT
+                    </a></h1>
+                <!-- if logo is image enable this
+        <a class="navbar-brand" href="#index.html">
+            <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+        </a> -->
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
+                    data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                    </span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav mx-lg-auto">
+                        <ul class="nav navbar-nav menu__list">
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="/index/">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/login/">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/customer_registration/">User Registration</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="/artist_registration/">Artist Registration</a>
+                        </li>
+
+                    </ul>
+
+                    <!-- //toggle switch for light and dark theme -->
+                    <!-- search popup -->
+                    <div id="search" class="pop-overlay">
+                        <div class="popup">
+                            <form action="#" method="GET" class="d-sm-flex">
+                                <input type="search" placeholder="Search.." name="search" required="required" autofocus>
+                                <button type="submit">Search</button>
+                                <a class="close" href="#url">&times;</a>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /search popup -->
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="mobile-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!-- //header -->
+    <!-- banner -->
+    <section class="w3l-breadcrumb">
+		<div class="container">
+		  <ul class="breadcrumbs-custom-path">
+			<li><a href="#url">Home</a></li>
+			<li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Login</li>
+		  </ul>
+		</div>
+	  </section>
+	  <!-- //w3l-breadcrumb-->
+	  <section class="w3l-index3 bg-grey" style="min-height: 400px;">
+		<div class="midd-w3 py-5">
+		  <div class="container py-lg-5 py-md-3">
+			<div class="row">
+			  <div class="col-lg-6 pr-lg-5">
+				{% if messages %}
+<ul class="messages">
+	{% for message in messages %}
+  <div class="alert alert-danger"> {{message }}</div>
+	{% endfor %}
+</ul>
+{% endif %}
+<form method="post" action="/login_action/" id="myform">
+	{% csrf_token %}
+	 <div class="form-group">
+		 <input type="text" class="form-control" placeholder="User Name" name="username"  >
+	 </div>
+	 <div class="form-group">
+		 <input type="password" class="form-control" placeholder="Password" name="password"  >
+	 </div>
+	 <input type="submit" value="Sign In" class="btn btn-info">
+ </form>
+ <script src="{% static 'assets/Validation/jquery-1.11.1.min.js' %}"></script>
+ <script src="{% static 'assets/Validation/jquery_validate.js' %}"></script>
+ <script src="{% static 'assets/Validation/additional_validate.js' %}"></script>
+<script>
+(function ($, W, D)
+{
+var JQUERY4U = {};
+JQUERY4U.UTIL =
+{
+setupFormValidation: function ()
+{
+$.validator.addMethod(
+"regex",
+function(value, element, regexp) {
+var check = false;
+return this.optional(element) || regexp.test(value);
+},
+"Not a valid Input."
+);
+
+//form validation rules
+$("#myform").validate({
+ignore: [],
+rules: {
+		 username: {
+		   required: true,
+
+
+		 },
+		 password: {
+		   required: true,
+
+
+		 },
+
+		 },
+
+	   messages: {
+
+
+},
+submitHandler: function (form) {
+form.submit();
+}
+});
+
+
+}
+}
+//when the dom has loaded setup form validation rules
+$(D).ready(function ($) {
+JQUERY4U.UTIL.setupFormValidation();
+});
+})(jQuery, window, document);
+</script>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </section>
+    <!-- //gallery-->
+
+
+    <!-- //middle slider -->
+    <!-- footer-28 block -->
+   
+
+
+        <!-- move top -->
+        
+        <script>
+            // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function () {
+                scrollFunction()
+            };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    document.getElementById("movetop").style.display = "block";
+                } else {
+                    document.getElementById("movetop").style.display = "none";
+                }
+            }
+
+            // When the user clicks on the button, scroll to the top of the document
+            function topFunction() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+        </script>
+        <!-- /move top -->
+        <!-- //footer-28 block -->
+    </footer>
+    <!-- all js scripts and files here -->
+
+    <script src="{% static 'assets_front/js/theme-change.js' %}"></script><!-- theme switch js (light and dark)-->
+
+    <script src="{% static 'assets_front/js/jquery-3.3.1.min.js' %}"></script><!-- default jQuery -->
+    <script src="{% static 'assets_front/js/owl.carousel.js' %}"></script>
+    <!-- script for tesimonials carousel slider -->
+    <script>
+        $(document).ready(function () {
+            $("#owl-demo1").owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: false
+                    },
+                    1000: {
+                        items: 1,
+                        nav: false,
+                        loop: false
+                    }
+                }
+            })
+        })
+    </script>
+    <!-- //script for tesimonials carousel slider -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+        $(function () {
+            $('.navbar-toggler').click(function () {
+                $('body').toggleClass('noscroll');
+            })
+        });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+
+    <!--/MENU-JS-->
+    <script>
+        $(window).on("scroll", function () {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 80) {
+                $("#site-header").addClass("nav-fixed");
+            } else {
+                $("#site-header").removeClass("nav-fixed");
+            }
+        });
+
+        //Main navigation Active Class Add Remove
+        $(".navbar-toggler").on("click", function () {
+            $("header").toggleClass("active");
+        });
+        $(document).on("ready", function () {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+            $(window).on("resize", function () {
+                if ($(window).width() > 991) {
+                    $("header").removeClass("active");
+                }
+            });
+        });
+    </script>
+    <!--//MENU-JS-->
+    <!-- jQuery-Photo-filter-lightbox-portfolio-plugin -->
+    <script src="{% static 'assets_front/js/jquery-1.7.2.js' %}"></script>
+    <script src="{% static 'assets_front/js/jquery.quicksand.js' %}"></script>
+    <script src="{% static 'assets_front/js/script.js' %}"></script>
+    <script src="{% static 'assets_front/js/jquery.prettyPhoto.js' %}"></script>
+    <!-- //jQuery-Photo-filter-lightbox-portfolio-plugin -->
+    <!-- bootstrap js -->
+    <script src="{% static 'assets_front/js/bootstrap.min.js' %}"></script>
+
+</body>
+<footer class="login-footer">
+    <p>© 2025 Art & Craft. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Support</a>
+    </div>
+  </footer>
+  
+</html>
+
+
